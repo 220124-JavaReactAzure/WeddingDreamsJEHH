@@ -1,0 +1,8 @@
+bin/
+resources/
+target/
+.metadata/
+*.class
+*.war
+*.properties
+src/main/resources/hibernate.cfg.xml
