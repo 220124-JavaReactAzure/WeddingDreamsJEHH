@@ -165,7 +165,7 @@
                 }
                 
                 if(dateTaken) { %>
-                    <td><p><% out.print(i); %> This date for the wedding is already reserved.</p></td>
+                    <td><p><% out.print(i); %></p><p> This date for the wedding is already reserved.</p></td>
             <%      }
                 else { %>
                 <td><p><% out.print(i); out.println(getNumberAssetTypesAvailable(list)); %></p><a href="betrothed-dash?day=<%out.print(i);%>&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>

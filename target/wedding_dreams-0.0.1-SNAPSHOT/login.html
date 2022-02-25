@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+<style>
+
+body {
+	 background-image: url("./img/login-bkgd.jpg");
+}
+#form-holder {
+	margin-left: 100px;
+	margin-top: 81px;
+}
+</style>
+
+
+</head>
 <body>
 
+<h1>Wedding Dreams</h1>
 
+<div id="form-holder">
 <form action="login" method="post">
-<label for="email">Email</label>
-<input type="text" name="email" required>
+<table>
+<tr>
+<td><label for="email">Email</label></td>
+<td><input type="email" name="email" required></td>
+</tr>
 
-<label for="pword">Password</label>
-<input type="password" name="pword" required>
+<tr>
+<td><label for="pword">Password</label></td>
+<td><input type="password" name="pword" required></td>
+</tr>
 
-<input type="submit" value="Login">
-<a href="register">Register new User</a>
+<tr>
+<td><input type="submit" value="Login"></td>
+<td><a href="register">Register new User</a></td>
+</tr>
 
-
+</table>
+</div>
 </body>
 </html>
