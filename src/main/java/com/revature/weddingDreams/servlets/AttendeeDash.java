@@ -29,7 +29,7 @@ public class AttendeeDash extends HttpServlet {
 	private final ObjectMapper mapper;
 	
 	public AttendeeDash(UserService us, BetrothedService bs, AttendeeService as, ObjectMapper os) {
-		this.userService = us;
+		this.userService = us; 
 		this.betrothedService = bs;
 		this.attendeeService = as;
 		this.mapper = os;

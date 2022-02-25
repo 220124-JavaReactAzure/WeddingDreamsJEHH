@@ -35,8 +35,6 @@ public class RegisterServlet extends HttpServlet {
 	
 	}
 
-  
-  
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	  int userTypeAsInt = Integer.parseInt(req.getParameter("type"));
@@ -58,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
 						redirectDestination = "./betrothed-dash";break;	
 					default:
 						resp.setStatus(500);
-						resp.getWriter().write("Unable to set redirect path.");
+						System.out.println("RegisterServlet: Unable to set redirect path.");
 				  }
 				
 			  	resp.setStatus(201);			  				
@@ -66,14 +64,13 @@ public class RegisterServlet extends HttpServlet {
 			} 	
 		  	else {
 				resp.setStatus(500);
-				resp.getWriter().write("Unable to persist user to database.");
+				System.out.println("Unable to persist user to database.");
 			}
 	  }
 	  catch (Exception e) {
 		  resp.setStatus(500);
-		  resp.getWriter().write("This user already exists");
+		  System.out.println("Other Exception."+e);
 		  e.printStackTrace();
 	  }
-	  // 
   }
 }

@@ -26,6 +26,7 @@ public class EmployeeDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not persist asset, HibernateException: "+e);
 			return false;
 		}	
 	}	
@@ -43,6 +44,7 @@ public class EmployeeDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not retrieve all assets, HibernateException: "+e);
 			return null;
 		}
 	}
@@ -59,6 +61,7 @@ public class EmployeeDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not get asset by id, HibernateException: "+e);
 			return null;
 		}
 	 }
@@ -79,6 +82,7 @@ public class EmployeeDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not get asset by type, HibernateException: "+e);
 			return null;
 		}
 	}
@@ -95,11 +99,12 @@ public class EmployeeDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not delete asset, HibernateException: "+e);
 			return null;
 		}
 	}
  
-	// check if we still use this
+	// check if we still use this, don't delete before presentation
 /***************** This method gets list of asset types, not assets ******/
 	public List<AssetType> getAssetTypes() {
 		Session session = HibernateUtil.getSession();

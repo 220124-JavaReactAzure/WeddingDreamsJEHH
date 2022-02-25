@@ -8,7 +8,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import com.revature.weddingDreams.models.Asset;
 import com.revature.weddingDreams.models.User;
 import com.revature.weddingDreams.util.HibernateUtil;
 
@@ -25,6 +24,7 @@ public class UserDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not persist user, HibernateException: "+e);
 			return false;
 		}
 	}
@@ -40,6 +40,7 @@ public class UserDAO {
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not update user, HibernateException: "+e);
 			return false;
 		}
 	}
@@ -73,6 +74,7 @@ public class UserDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not retrieve all users, HibernateException: "+e);
 			return null;
 		}
 	}
@@ -94,6 +96,7 @@ public class UserDAO {
 		} 
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not get user by email and password, HibernateException: "+e);
 			return null;
 		}
 	}

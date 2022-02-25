@@ -25,6 +25,7 @@ public class BetrothedDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not persist wedding, HibernateException: "+e);
 			return false;
 		}	
 	}	
@@ -40,6 +41,7 @@ public class BetrothedDAO {
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not update wedding, HibernateException: "+e);
 			return false;
 		}
 	}	
@@ -57,6 +59,7 @@ public class BetrothedDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not get retrieve all weddings wedding, HibernateException: "+e);
 			return null;
 		}
 	}
@@ -72,6 +75,7 @@ public class BetrothedDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not retrieve wedding, HibernateException: "+e);
 			return null;
 		}
 	 }		

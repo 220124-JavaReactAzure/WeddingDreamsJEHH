@@ -9,7 +9,7 @@ import com.revature.weddingDreams.util.HibernateUtil;
 
 
 public class AttendeeDAO {
-
+	
 	// session method
 	public boolean updateAttendeeMealChoice(User user) {
 		try {
@@ -21,10 +21,12 @@ public class AttendeeDAO {
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Unable to updateAttendeeMealChoice, HibernateException: "+e);
 			return false;
 		}
 	}
 	
+	// doesn't appear to be used, but don't delete before presentations
 	public Wedding getWeddingByID(String id) {
 		try {
 			Session session = HibernateUtil.getSession();
@@ -36,6 +38,7 @@ public class AttendeeDAO {
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("Could not retrieve wedding, HibernateException: "+e);
 			return null;
 		}
 	 }
