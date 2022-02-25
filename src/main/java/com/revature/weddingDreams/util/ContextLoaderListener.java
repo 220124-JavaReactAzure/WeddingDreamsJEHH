@@ -1,4 +1,5 @@
-package com.revature.weddingDreams.util;import java.util.logging.FileHandler;
+package com.revature.weddingDreams.util;import java.io.IOException;
+import java.util.logging.FileHandler;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -24,28 +25,29 @@ import com.revature.weddingDreams.servlets.RegisterServlet;
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
 	
-	//private Handler WDhandler;
-	//private Logger WDlogger;
+	static Logger WDlogger;	
+	
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.registerModule(new Hibernate5Module());	
+		WDlogger = Logger.getLogger("WD-logger");
 		
-		/*
+		WDlogger.setUseParentHandlers(false); // don't want to log based on tomcat logging.properties
 		try {
-		  WDhandler = new FileHandler("/src/loggingInfo.txt/", true);
-		  Logger.getLogger("weddingLogger").addHandler(WDhandler);
-		  Logger.getLogger("weddingLogger").setLevel(Level.CONFIG);
-		  this.WDlogger = Logger.getLogger("");
-		  WDlogger.info("The logging is being initialized in the CLL");
+			FileHandler fileHandler = new FileHandler("WD-logs.log", true);
+			WDlogger.addHandler(fileHandler);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	
 		
-		catch(Exception e) {
-			
-			WDlogger.info("The logging having trouble being initialized in the CLL");
-		}*/ 
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.registerModule(new Hibernate5Module());	 
 		
 		UserDAO userDAO = new UserDAO();
 		UserService userService = new UserService(userDAO);
@@ -73,13 +75,13 @@ public class ContextLoaderListener implements ServletContextListener {
 		context.addServlet("AttendeeDash", attendeeDash).addMapping("/attendee-dash");
 		context.addServlet("BetrothedDash", betrothedDash).addMapping("/betrothed-dash");
 		
-		//WDlogger.info("The entire context was successfully initialized");
+		WDlogger.info("The entire context was successfully initialized");
 	}	
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
 		ServletContextListener.super.contextDestroyed(sce);
-		//WDlogger.info("The entire was successfully destroyed");
+		WDlogger.info("The entire was successfully destroyed");
 
 	}
 

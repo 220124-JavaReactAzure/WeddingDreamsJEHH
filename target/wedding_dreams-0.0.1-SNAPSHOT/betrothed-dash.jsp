@@ -144,11 +144,11 @@
                     <td>  </td>
         <%      }
                 else if(dateTaken && dayOfWeekCount == firstOfMonthDay) { %> 
-                    <td>1 <p>This date for the wedding is already reserved.</p></td>                    
+                    <td><p>1</p> <p>This date for the wedding is already reserved.</p></td>                    
         <%                  
                }  
                 else { %>
-                    <td>1 <% out.println(getNumberAssetTypesAvailable(list)); %><a href="betrothed-dash?day=1&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>
+                    <td><p>1</p> <% out.println(getNumberAssetTypesAvailable(list)); %><a href="betrothed-dash?day=1&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>
         <%           
                 }
 
@@ -168,7 +168,7 @@
                     <td><p><% out.print(i); %> This date for the wedding is already reserved.</p></td>
             <%      }
                 else { %>
-                <td><% out.print(i); out.println(getNumberAssetTypesAvailable(list)); %><a href="betrothed-dash?day=<%out.print(i);%>&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>
+                <td><p><% out.print(i); out.println(getNumberAssetTypesAvailable(list)); %></p><a href="betrothed-dash?day=<%out.print(i);%>&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>
             <%      }
 
                 if(dayOfWeekCount == 7) { %>
@@ -204,7 +204,8 @@
             <form action="betrothed-dash" method="post">
                 <table>
                     <tr>
-                        <th>Your Wedding Selections</th><th></th>
+                        <th>Your Wedding Selections</th>                        
+                        <th><p>month:<% out.print(request.getParameter("month")); %></p><p>day:<% out.print(request.getParameter("day")); %></p><p>year:<% out.print(request.getParameter("year")); %> </p></th> 
                         <th>Change selections</th><th></th>
                     </tr>
                         <%  Asset chosenAsset = new Asset(); %>

@@ -144,7 +144,7 @@ public class BetrothedDash extends HttpServlet{
 			resp.sendRedirect("./betrothed-dash?updateWedding=true");			
 		}	
 		else {
-			resp.sendRedirect("test.jsp");
+			resp.sendRedirect("WeddingUnderBudget.html");
 		}							  							  				
 		
 	}
