@@ -35,37 +35,39 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("*** The login doPost was called ***");
-		User authenticatedUser;
-		authenticatedUser = userService.authenticateUser(req.getParameter("email"), req.getParameter("pword"));
-		System.out.println("*** Authenticated User");
-
-		try {			
+		try {
+			User authenticatedUser;
+			authenticatedUser = userService.authenticateUser(req.getParameter("email"), req.getParameter("pword"));
+			System.out.println("*** Authenticated User");
+			
 			HttpSession httpSession = req.getSession(true);
 			httpSession.setAttribute("authUser", authenticatedUser);
 			
-			switch (authenticatedUser.getUserType()) {
-			case 1: // user is employee
-				resp.sendRedirect("./employee-dash"); break;
-			case 2: // user is attendee
-				resp.sendRedirect("./attendee-dash"); break;
-			case 3: // user is betrothed
-				resp.sendRedirect("./betrothed-dash"); break;
-			default:
-				resp.setStatus(500);
-				resp.getWriter().write("Unable to set redirect path destination.");
-		}
+				switch (authenticatedUser.getUserType()) {
+				case 1: // user is employee
+					resp.sendRedirect("./employee-dash"); break;
+				case 2: // user is attendee
+					resp.sendRedirect("./attendee-dash"); break;
+				case 3: // user is betrothed
+					resp.sendRedirect("./betrothed-dash"); break;
+				default:
+					resp.setStatus(500);
+					resp.getWriter().write("Unable to set redirect path destination.");
+			}
+			
 		} 
 		catch (InvalidRequestException e) {
-			System.out.println("*** InvaludeRequestException");
+			System.out.println("*** InvaludeRequestException "+e);
 			resp.setStatus(400);
 		}
 		catch (AuthenticationException e) {
-			System.out.println("*** AuthenticationException");
+			System.out.println("*** AuthenticationException"+e);
 			resp.setStatus(401);
 		}
 		catch (Exception e) {
-			System.out.println("*** Other Exception");
+			System.out.println("*** Other Exception" +e);
 			e.printStackTrace();
+			resp.sendRedirect("UserDoesNotExist.html");
 			resp.setStatus(500);
 		}
 		

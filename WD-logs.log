@@ -48,3 +48,28 @@
   <thread>17</thread>
   <message>The entire was successfully destroyed</message>
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-02-25T11:35:57</date>
+  <millis>1645806957293</millis>
+  <sequence>32</sequence>
+  <logger>WD-logger</logger>
+  <level>INFO</level>
+  <class>com.revature.weddingDreams.util.ContextLoaderListener</class>
+  <method>contextInitialized</method>
+  <thread>1</thread>
+  <message>The entire context was successfully initialized</message>
+</record>
+<record>
+  <date>2022-02-25T11:39:25</date>
+  <millis>1645807165582</millis>
+  <sequence>61</sequence>
+  <logger>WD-logger</logger>
+  <level>INFO</level>
+  <class>com.revature.weddingDreams.util.ContextLoaderListener</class>
+  <method>contextDestroyed</method>
+  <thread>22</thread>
+  <message>The entire was successfully destroyed</message>
+</record>

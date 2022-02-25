@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-02-25T12:15:01</date>
+  <millis>1645809301041</millis>
+  <sequence>172</sequence>
+  <logger>WD-logger</logger>
+  <level>INFO</level>
+  <class>com.revature.weddingDreams.util.ContextLoaderListener</class>
+  <method>contextInitialized</method>
+  <thread>111</thread>
+  <message>The entire context was successfully initialized</message>
+</record>
+<record>
+  <date>2022-02-25T12:15:33</date>
+  <millis>1645809333445</millis>
+  <sequence>177</sequence>
+  <logger>WD-logger</logger>
+  <level>INFO</level>
+  <class>com.revature.weddingDreams.util.ContextLoaderListener</class>
+  <method>contextDestroyed</method>
+  <thread>106</thread>
+  <message>The entire was successfully destroyed</message>
+</record>
