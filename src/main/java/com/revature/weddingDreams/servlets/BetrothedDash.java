@@ -145,12 +145,7 @@ public class BetrothedDash extends HttpServlet{
 		}	
 		else {
 			resp.sendRedirect("test.jsp");
-		}
-		
-									  
-									  
-				
-				
+		}							  							  				
 		
 	}
 	

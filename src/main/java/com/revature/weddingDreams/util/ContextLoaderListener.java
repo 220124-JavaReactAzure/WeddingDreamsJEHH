@@ -1,11 +1,11 @@
-package com.revature.weddingDreams.util;
+package com.revature.weddingDreams.util;import java.util.logging.FileHandler;
 
-import javax.servlet.ServletContext;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.servlet.annotation.WebListener;import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import com.revature.weddingDreams.daos.AttendeeDAO;
 import com.revature.weddingDreams.daos.BetrothedDAO;
@@ -23,12 +23,29 @@ import com.revature.weddingDreams.servlets.RegisterServlet;
 
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
-
+	
+	//private Handler WDhandler;
+	//private Logger WDlogger;
+	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
+		
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.registerModule(new Hibernate5Module());	
-	
+		
+		/*
+		try {
+		  WDhandler = new FileHandler("/src/loggingInfo.txt/", true);
+		  Logger.getLogger("weddingLogger").addHandler(WDhandler);
+		  Logger.getLogger("weddingLogger").setLevel(Level.CONFIG);
+		  this.WDlogger = Logger.getLogger("");
+		  WDlogger.info("The logging is being initialized in the CLL");
+		}
+		
+		catch(Exception e) {
+			
+			WDlogger.info("The logging having trouble being initialized in the CLL");
+		}*/ 
 		
 		UserDAO userDAO = new UserDAO();
 		UserService userService = new UserService(userDAO);
@@ -55,13 +72,15 @@ public class ContextLoaderListener implements ServletContextListener {
 		context.addServlet("EmployeeDash", employeeDash).addMapping("/employee-dash");
 		context.addServlet("AttendeeDash", attendeeDash).addMapping("/attendee-dash");
 		context.addServlet("BetrothedDash", betrothedDash).addMapping("/betrothed-dash");
-		//context.addServlet("BetrothedDash", betrothedDash).addMapping("/betrothedDash/*");
 		
+		//WDlogger.info("The entire context was successfully initialized");
 	}	
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
 		ServletContextListener.super.contextDestroyed(sce);
+		//WDlogger.info("The entire was successfully destroyed");
+
 	}
 
 }

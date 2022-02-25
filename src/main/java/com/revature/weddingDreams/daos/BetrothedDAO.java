@@ -8,7 +8,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import com.revature.weddingDreams.models.User;
 import com.revature.weddingDreams.models.Wedding;
 import com.revature.weddingDreams.util.HibernateUtil;
 

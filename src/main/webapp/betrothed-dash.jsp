@@ -33,7 +33,9 @@
                         "<p>"+String.valueOf(counts[2])+" florists available</p>" +
                         "<p>"+String.valueOf(counts[3])+" photographers available</p>" +
                         "<p>"+String.valueOf(counts[4])+" musicians available</p>";			
-        return returnStr;
+        //return returnStr;
+
+        return "";
     } %>
 
     
@@ -90,13 +92,6 @@
                 <input type="submit" value="Change Month/Year">
             </form>
 
-
-
-
-
-
-
-
             <table>
                 <tr><th>Sun  </th><th>Mon  </th><th>Tues </th><th>Wed  </th><th>Thurs</th><th>Fri  </th><th>Sat  </th></tr>
                 <tr>
@@ -115,8 +110,11 @@
                 for(Wedding wedding:weddingList) {
                     String date = wedding.getWeddingDate();
                     // year-month-day
-                    String[] yearMonthDayDate = date.split("-"); %>
-                   <% if(yearMonthDayDate[0].equals(String.valueOf(year)) && yearMonthDayDate[1].equals(String.valueOf(month))) {
+                    String[] yearMonthDayDate = date.split("-"); 
+                    yearMonthDayDate[0] = yearMonthDayDate[0].trim();
+                    yearMonthDayDate[1] = yearMonthDayDate[1].trim();
+                    yearMonthDayDate[2] = yearMonthDayDate[2].trim(); 
+                    if(yearMonthDayDate[0].equals(String.valueOf(year)) && yearMonthDayDate[1].equals(String.valueOf(month))) {
                         
                         // cast day as Int and add to list takenDays
                         takenDays.add(Integer.parseInt(yearMonthDayDate[2]));
@@ -133,74 +131,58 @@
                 firstOfMonthDay += 1;
             } %>
 
-            <% for(int d:takenDays) { %>
-                <h1><% out.print(d); %> </h1>
-
-            <% }  %>
-
-
 
     <%      int dayOfWeekCount = 1;  
             while(dayOfWeekCount <= firstOfMonthDay) {
                 boolean dateTaken = false;
-                
-                if(takenDays.contains(1)) {
-                    dateTaken = true;
+                for(int day:takenDays) {
+                    if(1 == day)
+                        dateTaken = true;
                 }
-
+                
                 if(dayOfWeekCount < firstOfMonthDay) { %>
                     <td>  </td>
         <%      }
-                else if(dayOfWeekCount == firstOfMonthDay || dateTaken) { %> 
-                    <td>1 <% out.println(getNumberAssetTypesAvailable(list)); %><a href="betrothed-dash?day=1&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>
-        <%     
-                }  
+                else if(dateTaken && dayOfWeekCount == firstOfMonthDay) { %> 
+                    <td>1 <p>This date for the wedding is already reserved.</p></td>                    
+        <%                  
+               }  
                 else { %>
-                    <td><p>This date for the wedding is already reserved.</p><td>
-        <%       }
+                    <td>1 <% out.println(getNumberAssetTypesAvailable(list)); %><a href="betrothed-dash?day=1&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>
+        <%           
+                }
 
                 ++dayOfWeekCount; 
             } %>
-
-
-
-        <!-- create rest of month -->
-        <%  
-        
+                
+            <!-- create rest of month -->
+            <%   
             for(int i = 2; i <= lengthOfMonth; i++) { 
                 boolean dateTaken = false;
-                
                 for(int day:takenDays) {
                     if(i == day)
                         dateTaken = true;
                 }
                 
                 if(dateTaken) { %>
-                    <td>  </td>
-        <%      } %>
-
+                    <td><p><% out.print(i); %> This date for the wedding is already reserved.</p></td>
+            <%      }
+                else { %>
                 <td><% out.print(i); out.println(getNumberAssetTypesAvailable(list)); %><a href="betrothed-dash?day=<%out.print(i);%>&month=<%out.print(month);%>&year=<%out.print(year);%>">Select this day</a></td>
-        <%      if(dayOfWeekCount == 7) { %>
+            <%      }
+
+                if(dayOfWeekCount == 7) { %>
                     </tr><tr>
-        <%            dayOfWeekCount = 0;
+            <%            dayOfWeekCount = 0;
                 }  
                 dayOfWeekCount++;
             } %>
 
+       
             </tr>
         </table>
     <%  } 
-
-
-
-
-
-
-
-
-
-
-
+    
       else  { %>
 <!--  Wedding has been created, show wedding-edit form -->
     <%      EmployeeDAO employeeDAO = new EmployeeDAO();

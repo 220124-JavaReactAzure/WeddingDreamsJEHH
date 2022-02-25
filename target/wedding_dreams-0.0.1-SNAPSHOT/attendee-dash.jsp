@@ -13,7 +13,7 @@
               
             <!-- Attendee Wedding Calendar-->
             <label id="wedding-date-label" for="wedding-date">Wedding Date:</label>
-            <input type="date" id="calendar-month-year" name="calendar-month-year"
+            <input type="date" id="calendar-month-year" name="wedding-date"
                 <% String currentDateStr = LocalDate.now().getYear()+"-"+LocalDate.now().getMonth().getValue()+"-"+LocalDate.now().getDayOfMonth(); %>    
                 value="<% out.print(currentDateStr); %>"
                 min="<% out.print(currentDateStr); %>" max="2027-12-31" required>
@@ -36,9 +36,9 @@
             <br /><br />			
                 <label>Plus One?</label>
                 <label for="plus-one-choice">Yes</label>
-                <input type="radio" name="plus-one-choice"  value="Yes" required>
+                <input type="radio" name="plus-one-choice"  value="Yes" >
                 <label for="plus-one-choice">No</label>
-                <input type="radio" name="plus-one-choice"  value="No" required>   
+                <input type="radio" name="plus-one-choice"  value="No" checked>   
             <br />
 			
 			<label>Plus One Meal Choice</label>       

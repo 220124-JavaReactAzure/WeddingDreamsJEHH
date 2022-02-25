@@ -14,13 +14,12 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.weddingDreams.exceptions.WeddingNotFoundException;
 import com.revature.weddingDreams.models.User;
 import com.revature.weddingDreams.models.Wedding;
 import com.revature.weddingDreams.services.AttendeeService;
 import com.revature.weddingDreams.services.BetrothedService;
 import com.revature.weddingDreams.services.UserService;
-import com.revature.weddingDreams.util.WeddingNotFound;
+//import com.revature.weddingDreams.util.WeddingNotFound;
 
 public class AttendeeDash extends HttpServlet {
 
@@ -71,7 +70,6 @@ public class AttendeeDash extends HttpServlet {
 			}
 			
 			if(req.getParameter( "plus-one-choice").equals("Yes")) {
-				System.out.println("it worked");
 				user.setPlusOne(true);
 				user.setMealOptionsPlusOne( req.getParameter("plus-one-meal"));
 			}
