@@ -6,13 +6,13 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.username">jop5oup@postgres-je</property>
-        <property name="hibernate.connection.password">JeMj8386</property> 
-        <property name="hibernate.connection.url">jdbc:postgresql://postgres-je.postgres.database.azure.com:5432/postgres?createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">CONNECTION_USERNAME</property>
+        <property name="hibernate.connection.password">CONNECTION_PASSWORD</property> 
+        <property name="hibernate.connection.url">CONNECTION_JDBD_URL</property>
 
         <!-- Hibernate Properties -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.default_schema">public</property> <!-- This should be the name of your schema -->
+        <property name="hibernate.default_schema">NAME_DEFAULT_SCHEMA</property> <!-- This should be the name of your schema -->
         <!-- Hibernate console output -->
         <property name="hibernate.show_sql">false</property>
         <property name="hibernate.format_sql">true</property>
