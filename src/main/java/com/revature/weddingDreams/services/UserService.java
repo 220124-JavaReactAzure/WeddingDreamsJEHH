@@ -18,6 +18,7 @@ public class UserService {
 	}
 
 // Methods
+	
 	public boolean addUser(User user) {
 		return userDAO.addUser(user);
 	}

@@ -7,6 +7,7 @@ import com.revature.weddingDreams.models.User;
 import com.revature.weddingDreams.models.Wedding;
 import com.revature.weddingDreams.util.HibernateUtil;
 
+
 public class AttendeeDAO {
 
 	// session method
@@ -23,6 +24,7 @@ public class AttendeeDAO {
 			return false;
 		}
 	}
+	
 	public Wedding getWeddingByID(String id) {
 		try {
 			Session session = HibernateUtil.getSession();

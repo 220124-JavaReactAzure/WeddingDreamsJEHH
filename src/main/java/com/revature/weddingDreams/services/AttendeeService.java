@@ -3,6 +3,7 @@ package com.revature.weddingDreams.services;
 import com.revature.weddingDreams.daos.AttendeeDAO;
 import com.revature.weddingDreams.models.User;
 
+
 public class AttendeeService {
 
 	private final AttendeeDAO attendeeDAO;
