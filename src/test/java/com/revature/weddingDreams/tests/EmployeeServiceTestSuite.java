@@ -8,6 +8,9 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,12 +18,12 @@ import com.revature.weddingDreams.daos.EmployeeDAO;
 import com.revature.weddingDreams.models.Asset;
 import com.revature.weddingDreams.models.AssetType;
 import com.revature.weddingDreams.services.EmployeeService;
+import com.revature.weddingDreams.util.HibernateUtil;
 
 public class EmployeeServiceTestSuite {
 	
 	EmployeeService sut;
 	EmployeeDAO mockEmployeeDAO;
-	
 	
 	@Before
 	public void testPrep() {
@@ -92,6 +95,7 @@ public class EmployeeServiceTestSuite {
 		assertFalse( assets.isEmpty() );
 				
 	}
+	
 	@Test
 	public void test_getAssetByID() {
 		Asset asset = new Asset();
@@ -100,6 +104,15 @@ public class EmployeeServiceTestSuite {
 		assertNotNull(asset);
 		asset = sut.getAssetByID(null);
 		assertNull(asset);
-		
+	}
+	
+	@Test
+	public void test_deleteAssetByID() {
+		Asset asset = new Asset();
+		asset.setAssetID("assetID");
+		when(mockEmployeeDAO.deleteAssetByID("assetID")).thenReturn(asset);			
+		assertNotNull(asset);
+		asset = sut.getAssetByID(null);
+		assertNull(asset);
 	}
 }

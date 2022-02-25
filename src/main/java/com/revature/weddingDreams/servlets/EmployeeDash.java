@@ -1,7 +1,6 @@
 package com.revature.weddingDreams.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
@@ -33,31 +32,45 @@ public class EmployeeDash extends HttpServlet {
 	}
 	@Override // Adds asset to data base
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String assetID = UUID.randomUUID().toString();
-		Asset newAsset = new Asset(assetID, req.getParameter("name"), req.getParameter("address"), Double.parseDouble(req.getParameter("price")), Integer.parseInt(req.getParameter("type")));
-		
-		try {
-			boolean res = employeeService.addAsset(newAsset);
-			if(res) {
-				resp.setStatus(201);
-				resp.getWriter().write("<p>Asset added to database. </p><a href=\"employee-dash\">Click to add another asset</a>");
-				
-				// add link to logout
+		// DELETE ASSET
+		if(req.getParameter("Asset-to-delete") != null) { // need to get asset id from parameter and delete
+			String assetToDeleteID = req.getParameter("Asset-to-delete");
+			try {
+				Asset deletedAsset = employeeService.deleteAssetByID(assetToDeleteID);				
+				if(deletedAsset != null) {
+					resp.setStatus(201);
+				}
+				else {
+					resp.setStatus(500);
+				}
 			}
-			else {
+			catch (Exception e) { // IDE freaked out with the other excpetions
 				resp.setStatus(500);
-				resp.getWriter().write("Unable to persist asset to database");
+				e.printStackTrace();
+			}	
+		}
+		else {
+			String assetID = UUID.randomUUID().toString();
+			Asset newAsset = new Asset(assetID, req.getParameter("name"), req.getParameter("address"), Double.parseDouble(req.getParameter("price")), Integer.parseInt(req.getParameter("type")));
+			
+			try {
+				boolean res = employeeService.addAsset(newAsset);
+				if(res) {
+					resp.setStatus(201);
+				}
+				else {
+					resp.setStatus(500);
+				}
 			}
+			catch (Exception e) {
+				resp.setStatus(500);
+				e.printStackTrace();
+			}
+			/*catch (StreamReadException | DatabindException e) {
+				resp.setStatus(400);
+				e.printStackTrace();
+			}*/
 		}
-		catch (StreamReadException | DatabindException e) {
-			resp.setStatus(400);
-			resp.getWriter().write("JSON threw an exception");
-			e.printStackTrace();
-		}
-		catch (Exception e) {
-			resp.setStatus(500);
-			resp.getWriter().write("Some other exception");
-			e.printStackTrace();
-		}	
+		resp.sendRedirect("./employee-dash");
 	}
 }

@@ -32,11 +32,12 @@ public class EmployeeService {
 		return employeeDAO.getAssetByID(id);
 	}
 	
-	/*
-	public boolean deleteAsset(Asset asset) {
-		return employeeDAO.deleteAsset(asset);
+	
+	public Asset deleteAssetByID(String id) {
+		return employeeDAO.deleteAssetByID(id);
 	}
-	*/
+	
+	// need to check if we are still using this
 	public List<AssetType> getAssetTypes() {
 		return employeeDAO.getAssetTypes();
 	}

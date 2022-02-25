@@ -5,17 +5,13 @@ import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import com.revature.weddingDreams.models.AssetType;
 import com.revature.weddingDreams.models.Asset;
-import com.revature.weddingDreams.models.User;
-import com.revature.weddingDreams.models.Wedding;
 import com.revature.weddingDreams.util.HibernateUtil;
-
 
 public class EmployeeDAO {
 	
@@ -52,7 +48,6 @@ public class EmployeeDAO {
 	}
 
 	
-
 	 public Asset getAssetByID(String id) {
 		try {
 			Session session = HibernateUtil.getSession();
@@ -88,24 +83,23 @@ public class EmployeeDAO {
 		}
 	}
 	
-/*
-	public boolean deleteAsset(Asset asset) {
+	public Asset deleteAssetByID(String id) {
 		try {
 			Session session = HibernateUtil.getSession();
 			session.beginTransaction();
-			session.delete(asset);
+			Asset asset = session.get(Asset.class, id);
+			session.delete(asset);			
 			session.getTransaction().commit();
-			return true;
+			session.close();
+			return asset;
 		}
-		catch (HibernateException | IOException e) {
+		catch (HibernateException e) {
 			e.printStackTrace();
-			return false;
-		}
-		finally {
-			HibernateUtil.closeSession();
+			return null;
 		}
 	}
- */
+ 
+	// check if we still use this
 /***************** This method gets list of asset types, not assets ******/
 	public List<AssetType> getAssetTypes() {
 		Session session = HibernateUtil.getSession();
