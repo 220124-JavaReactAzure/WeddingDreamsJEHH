@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Here goes your awesome project description!
+My Wedding Planner app was developed for a small wedding planning company that is looking to help streamline the management and allocation of wedding resources to the betrothed. They can access various assets to be assigned to their wedding, checking asset availability dates and allowing attendees to join with their contact information, meal choices and plus one information. This RESTful application leverages a local tomcat server to handle incoming requests to thoroughly tested services that must be persisted using Hibernate and Azure SQL services. 
 
 ## Technologies Used
 
@@ -20,10 +20,10 @@ Here goes your awesome project description!
 ## Features
 
 List of features ready and TODOs for future development
-* Users can create an Employee, Betrothed or Attendee account
-* Employees can create, delete, and update wedding assets
-* Bethrothed users can view/edit their wedding details, check availability of assets
-* Attendees can add contact infomration, view venue information for the wedding they are attending, Confirm/Cancel a plus one, Select meal option for self and plus one 
+* Users can create an Employee, Betrothed or Attendee account.
+* Employees can create, delete, and update wedding assets.
+* Bethrothed users can view/edit their wedding details, check availability of assets on a calendar.
+* Attendees can add contact infomration, view venue information for the wedding they are attending, Confirm/Cancel a plus one, Select meal option for self and plus one.
 
 To-do list:
 * Add a CSS framework
