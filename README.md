@@ -44,11 +44,11 @@ Notes:
 
    Change CONNECTION_DRIVER, CONNECTION_USERNAME, CONNECTION_PASSWORD, CONNECTION_JDBD_URL, and NAME_DEFAULT_SCHEMA to reflect your database
 
-	`<property name="hibernate.connection.driver_class">CONNECTION_DRIVER</property>`
-	`<property name="hibernate.connection.username">CONNECTION_USERNAME</property>`
-	`<property name="hibernate.connection.password">CONNECTION_PASSWORD</property>`
-	`<property name="hibernate.connection.url">CONNECTION_JDBD_URL</property>`
-	`<property name="hibernate.default_schema">NAME_DEFAULT_SCHEMA</property>`
+	`<property name="hibernate.connection.driver_class">CONNECTION_DRIVER`
+	`<property name="hibernate.connection.username">CONNECTION_USERNAME`
+	`<property name="hibernate.connection.password">CONNECTION_PASSWORD`
+	`<property name="hibernate.connection.url">CONNECTION_JDBD_URL`
+	`<property name="hibernate.default_schema">NAME_DEFAULT_SCHEMA`
 
 4. Start Apache-Tomcat server
 	`apache-tomcat-[version]/bin/startup.bat`
