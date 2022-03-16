@@ -13,9 +13,9 @@ My Wedding Planner app was developed for a small wedding planning company that i
 * JUnit - 4.13.2
 * Git - 2.34.1
 * Maven - version 3.8.4
-* Azure SQL Databases
 * Log4J - 2.17.1
 * JSP - 2.0
+* Azure SQL Databases
 
 ## Features
 
