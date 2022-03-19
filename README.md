@@ -1,3 +1,5 @@
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+
 # WEDDING DREAMS
 
 ## Project Description
@@ -64,6 +66,3 @@ Notes:
 ## Contributors
 Joshua Evans
 Hannah Hospital
-
-## License
-This project uses the following license: [<license_name>](<link>).
