@@ -64,5 +64,5 @@ Notes:
 3. You will be redirected to the appropriate user type dashboard
 
 ## Contributors
-Joshua Evans
+Joshua Evans,
 Hannah Hospital
