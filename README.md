@@ -19,7 +19,6 @@ My Wedding Planner app was developed for a small wedding planning company that i
 
 ## Features
 
-List of features ready and TODOs for future development
 * Users can create an Employee, Betrothed or Attendee account.
 * Employees can create, delete, and update wedding assets.
 * Bethrothed users can view/edit their wedding details, check availability of assets on a calendar.
